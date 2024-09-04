@@ -1,0 +1,180 @@
+public class queen10 {
+
+    public static void main(String[] args) {
+        int n = 10;   // number of queens
+        int count = 0;  // a counter to count how many answers we have
+        long start = System.nanoTime(); // time before execution of for loops
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int j2 = 0; j2 < n; j2++) {
+                    for (int k = 0; k < n; k++) {
+                        for (int k2 = 0; k2 < n; k2++) {
+                            for (int l = 0; l < n; l++) {
+                                for (int l2 = 0; l2 < n; l2++) {
+                                    for (int m = 0; m < n; m++) {
+                                        for (int m2 = 0; m2 < n; m2++) {
+                                            for (int o = 0; o < n; o++) {
+                                                // check each queen with the other queens not to hit each other
+                                                // location of each queen on chess board is considered as (number of row, number of column)
+                                                if (Hit(i, 0, j, 1)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, j2,2)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, k,3)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, k2,4)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, l,5)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, l2,6)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, m,7)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(i,0, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, j2,2)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, k,3)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, k2,4)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, l,5)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, l2,6)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, m,7)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j,1, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j2,2, k,3)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j2,2, k2,4)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j2,2, l,5)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j2,2, l2,6)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j2,2, m,7)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j2,2, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(j2,2, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k,3, k2,4)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k,3, l,5)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k,3, l2,6)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k,3, m,7)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k,3, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k,3, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k2,4, l,5)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k2,4, l2,6)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k2,4, m,7)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k2,4, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(k2,4, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(l,5, l2,6)) {
+                                                    continue;
+                                                }
+                                                if (Hit(l,5, m,7)) {
+                                                    continue;
+                                                }
+                                                if (Hit(l,5, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(l,5, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(l2,6, m,7)) {
+                                                    continue;
+                                                }
+                                                if (Hit(l2,6, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(l2,6, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(m,7, m2,8)) {
+                                                    continue;
+                                                }
+                                                if (Hit(m,7, o,9)) {
+                                                    continue;
+                                                }
+                                                if (Hit(m2,8, o,9)) {
+                                                    continue;
+                                                }
+                                                count++; // no queens hit each other so increase counter by one
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        long finish = System.nanoTime(); // time after execution of for loops
+        long duration = finish - start; // the differnece between start and end time gives us the duration of execution
+        System.out.println("duration = " + duration + " ns");
+        System.out.println("number of solutions = " + count);
+        
+    }
+
+    // this function checks all the possible ways that queens can hit each other
+    public static boolean Hit(int x, int y, int x2, int y2) {
+        if (x == x2 || y == y2 || (x == x2+1 && y == y2+1) || (x == x2-1 && y == y2-1) || (x == x2+1 && y == y2-1) || (x == x2-1 && y == y2+1) ||
+            ((Math.abs(x2-x)) == (Math.abs(y2-y)))) {
+            return true;
+        }
+        return false;
+    }
+}
