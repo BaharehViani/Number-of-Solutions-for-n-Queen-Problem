@@ -1,2 +1,3 @@
-# Number-of-Solutions-for-n-Queen-Problem
-Finding the number of all different queen positions on the chessboard without hitting each other using nested for loops
+## Number-of-Solutions-for-n-Queen-Problem
+Finding the number of all different queen positions on the chessboard without hitting each other using **nested for loops**.
+<br/>This method places each queen in all the squares of the chess board, then compares that queen with other queens, and if they don't hit another one, it adds one unit to the value of the counter, and finally the total number of possible answers is obtained. 
